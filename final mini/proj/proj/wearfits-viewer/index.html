@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WEARFITS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">DigiDrape<sup>®</sup></div>
+        <div class="language-selector">
+            <select>
+                <option value="en" selected>en</option>
+                <option value="hi">hi</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <h1>SELECT PRODUCT</h1>
+        <p>Choose a clothing item you would like to visualize</p>
+
+        <div class="model-container">
+            <button class="nav-button" id="prev">&lt;</button>
+            <model-viewer id="model-viewer"
+                src="models/model1.glb"
+                alt="3D model"
+                auto-rotate
+                camera-controls
+                ar
+                shadow-intensity="1">
+            </model-viewer>
+            <button class="nav-button" id="next">&gt;</button>
+        </div>
+
+        <button class="visualize-button">GO TO VISUALIZATION</button>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

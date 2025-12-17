@@ -1,0 +1,161 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  text-align: center;
+  color: #000;
+  
+  margin: 0;
+  padding: 0;
+
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  border-bottom: 1px solid #ddd;
+  background-color: rgb(216, 220, 255);
+  height: 150px;
+} 
+
+.logo {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 150px; /* Adjust as needed */
+  width: auto;   /* Maintain aspect ratio */
+  object-fit: contain;
+  align-items: left;
+}
+
+.language-selector select {
+  padding: 5px;
+}
+
+main {
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 52px;
+  margin-bottom: 10px;
+}
+
+h2{
+  text-decoration-line: underline;
+}
+
+p {
+  font-size: 16px;
+  color: #000000;
+}
+
+.model-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+  background-color: #ddd;
+  height: 550px;
+}
+
+model-viewer {
+  width: 600px;
+  height: 500px;
+}
+
+.nav-button {
+  font-size: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+}
+
+.visualize-button {
+  background-color: black;
+  color: white;
+  padding: 15px 40px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+.sections {
+  display: inline-block;
+  margin-left: 30px;
+  vertical-align: middle;
+  align-self: flex-end;
+}
+
+.shape-link {
+  font-weight: bold;
+  font-size: 25px;
+  text-decoration: none;
+  color: #101010;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.shape-link:hover {
+  color: white;
+  background-color: rgb(114, 112, 254);
+}
+
+.OF-link {
+  font-weight: bold;
+  font-size: 25px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.OF-link:hover {
+  color: white;
+  background-color: #717171;
+}
+
+.VTON-link {
+  font-weight: bold;
+  font-size: 25px;
+  text-decoration: none;
+  color: rgb(10, 9, 9);
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.VTON-link:hover {
+  color: white;
+  background-color:rgb(114, 112, 254);
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.center-model {
+  width: 600px;
+  height: 600px;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.side-model {
+  width: 450px;
+  height: 400px;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}

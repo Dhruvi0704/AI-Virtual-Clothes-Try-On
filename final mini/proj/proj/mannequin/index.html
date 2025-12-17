@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3D Model Size & Skin Selector</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="model-container">
+      <model-viewer id="model-viewer"
+        src="models/BaseMashFemale.glb"
+        alt="3D model"
+        auto-rotate
+        camera-controls
+        ar
+        shadow-intensity="1">
+</model-viewer>
+
+    </div>
+
+    <div class="size-box">
+      <h1>Select Product Size</h1>
+      <div class="sizes">
+        <button class="size-btn" data-size="XS">XS</button>
+        <button class="size-btn" data-size="S">S</button>
+        <button class="size-btn" data-size="M">M</button>
+        <button class="size-btn" data-size="XL">XL</button>
+        <button class="size-btn" data-size="XXL">XXL</button>
+      </div>
+
+      <h1>Select Skin Color</h1>
+      <div class="skins">
+      <button class="skin-btn" data-skin="1" style="background-color: rgb(255,219,172);" title="Very Fair"></button>
+      <button class="skin-btn" data-skin="2" style="background-color: rgb(241,194,125);" title="Fair"></button>
+      <button class="skin-btn" data-skin="3" style="background-color: rgb(224,172,105);" title="Medium"></button>
+      <button class="skin-btn" data-skin="4" style="background-color: rgb(198,134,66);" title="Tan"></button>
+      <button class="skin-btn" data-skin="5" style="background-color: rgb(141,85,36);" title="Deep"></button>
+
+</div>
+
+
+      <button class="visualize-button">GO TO VISUALIZATION</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

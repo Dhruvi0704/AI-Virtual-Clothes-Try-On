@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Outfit Recommender - Kids' Section</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #bfbfbf, #9a9a9a);
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1, h2, h3 {
+            text-align: center;
+            color: #060606;
+            margin-bottom: 20px;
+        }
+        form {
+             max-width: 800px;
+            width: 100%;
+            background: #6e6e6e;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+        .gender-section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #444;
+        }
+        .item-selection {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .item-selection div {
+            margin: 10px;
+            text-align: center;
+        }
+        input[type="radio"] {
+            display: none;
+        }
+        label {
+            cursor: pointer;
+            display: block;
+            position: relative;
+            padding-left: 0;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+        label img {
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        input[type="radio"]:checked + label img {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #090909;
+        }
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #060606;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+        input[type="submit"]:hover {
+            background: #383838;
+        }
+        .recommendations {
+            max-width: 800px;
+            width: 100%;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+        .recommendations img {
+            margin: 10px;
+            border-radius: 10px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .recommendation-title {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        .selected-item {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .selected-item img {
+            border-radius: 10px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            box-shadow: 0 0 10px #343334;
+        }
+        .gender-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .gender-tab {
+            padding: 10px 20px;
+            background: #333;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .gender-tab.active {
+            background: #343435;
+        }
+        .gender-content {
+            display: none;
+        }
+        .gender-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Outfit Recommender</h1>
+    <h2>Kids' Section</h2>
+    
+    <div class="gender-tabs">
+        <div class="gender-tab {% if gender == 'boys' %}active{% endif %}" onclick="showGender('boys')">Boys</div>
+        <div class="gender-tab {% if gender == 'girls' %}active{% endif %}" onclick="showGender('girls')">Girls</div>
+    </div>
+    
+    <!-- Boys Section -->
+    <form method="post" action="/kids" id="boys-form" class="gender-content {% if gender == 'boys' %}active{% endif %}">
+        <input type="hidden" name="gender" value="boys">
+        <div class="gender-section">
+            <h3>Select a Boy's Shirt:</h3>
+            <div class="item-selection">
+                {% for top in boys_shirts %}
+                    <div>
+                        <input type="radio" name="shirt" value="{{ top }}" id="boys_{{ top }}">
+                        <label for="boys_{{ top }}">
+                            <img src="{{ top }}" alt="Boy's Top">
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="gender-section">
+            <h3>Select a Boy's Bottom:</h3>
+            <div class="item-selection">
+                {% for bottom in boys_bottoms %}
+                    <div>
+                        <input type="radio" name="bottom" value="{{ bottom }}" id="boys_{{ bottom }}">
+                        <label for="boys_{{ bottom }}">
+                            <img src="{{ bottom }}" alt="Boy's Bottom">
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="gender-section">
+            <h3>Select a Boy's Shoe:</h3>
+            <div class="item-selection">
+                {% for shoe in boys_shoes %}
+                    <div>
+                        <input type="radio" name="shoe" value="{{ shoe }}" id="boys_{{ shoe }}">
+                        <label for="boys_{{ shoe }}">
+                            <img src="{{ shoe }}" alt="Boy's Shoe">
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <input type="submit" value="Get Recommendations for Boys">
+    </form>
+    
+    <!-- Girls Section -->
+    <form method="post" action="/kids" id="girls-form" class="gender-content {% if gender == 'girls' %}active{% endif %}">
+        <input type="hidden" name="gender" value="girls">
+        <div class="gender-section">
+            <h3>Select a Girl's Top:</h3>
+            <div class="item-selection">
+                {% for top in girls_tops %}
+                    <div>
+                        <input type="radio" name="shirt" value="{{ top }}" id="girls_{{ top }}">
+                        <label for="girls_{{ top }}">
+                            <img src="{{ top }}" alt="Girl's Top">
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="gender-section">
+            <h3>Select a Girl's Bottom:</h3>
+            <div class="item-selection">
+                {% for bottom in girls_bottoms %}
+                    <div>
+                        <input type="radio" name="bottom" value="{{ bottom }}" id="girls_{{ bottom }}">
+                        <label for="girls_{{ bottom }}">
+                            <img src="{{ bottom }}" alt="Girl's Bottom">
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="gender-section">
+            <h3>Select a Girl's Shoe:</h3>
+            <div class="item-selection">
+                {% for shoe in girls_shoes %}
+                    <div>
+                        <input type="radio" name="shoe" value="{{ shoe }}" id="girls_{{ shoe }}">
+                        <label for="girls_{{ shoe }}">
+                            <img src="{{ shoe }}" alt="Girl's Shoe">
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <input type="submit" value="Get Recommendations for Girls">
+    </form>
+    
+    {% if selected_item %}
+        <div class="selected-item">
+            <h3>Selected Item:</h3>
+            <img src="{{ selected_item }}" alt="Selected Item">
+        </div>
+    {% endif %}
+    
+    {% if recommended_bottoms %}
+        <div class="recommendations">
+            <h3 class="recommendation-title">Recommended Bottoms:</h3>
+            {% for bottom in recommended_bottoms %}
+                <img src="{{ bottom }}" alt="Recommended Bottom">
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    {% if recommended_shirts %}
+        <div class="recommendations">
+            <h3 class="recommendation-title">Recommended Tops:</h3>
+            {% for top in recommended_shirts %}
+                <img src="{{ top }}" alt="Recommended Top">
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    {% if recommended_shoes %}
+        <div class="recommendations">
+            <h3 class="recommendation-title">Recommended Shoes:</h3>
+            {% for shoe in recommended_shoes %}
+                <img src="{{ shoe }}" alt="Recommended Shoe">
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <script>
+        function showGender(gender) {
+            // Hide all forms
+            document.querySelectorAll('.gender-content').forEach(form => {
+                form.classList.remove('active');
+            });
+            
+            // Show selected form
+            document.getElementById(gender + '-form').classList.add('active');
+            
+            // Update active tab
+            document.querySelectorAll('.gender-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.querySelector(`.gender-tab[onclick="showGender('${gender}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

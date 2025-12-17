@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fashion.AI - Select Category</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #efeded, #b7b7b7);
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Background particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            z-index: -1;
+        }
+        .particle {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        h1 {
+            color: #0b0b0b;
+            margin-bottom: 20px;
+            font-size: 2.8em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .logo {
+            width: 250px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(91, 91, 91, 0.5));
+            animation: pulse 2s infinite ease-in-out;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #0f0f0f;
+            margin-bottom: 40px;
+            font-size: 25px;
+            max-width: 80%;
+            text-align: center;
+            animation: fadeIn 2s ease-out;
+        }
+        
+        .category-selection {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .category-card {
+            background-color: rgba(67, 65, 65, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            cursor: pointer;
+            width: 200px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            background-color: rgba(42, 42, 42, 0.9);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(63, 92, 164, 0.3);
+        }
+        
+        .category-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            border: 3px solid #3f3f3f;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(126, 126, 126, 0.4);
+        }
+        
+        .category-card:hover img {
+            transform: rotate(5deg);
+            border-color: #9d64ff;
+        }
+        
+        .category-card a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.3em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 10px 0;
+            border-radius: 30px;
+            background: linear-gradient(45deg, #9fa0a0, #9d64ff);
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+        
+        .category-card a:hover {
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+        
+        /* Enhanced animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.4; }
+            100% { transform: translateY(-200px) rotate(360deg); opacity: 0; }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .category-selection {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .category-card {
+                width: 180px;
+            }
+        
+        }
+    </style>
+</head>
+<body>
+    <!-- Background particles -->
+    <div class="particles" id="particles"></div>
+    
+    <h1>Fashion.AI</h1>
+    <img src="static/logo.jpg" alt="Logo" class="logo">
+    <div class="quote">"Fashion is the armor to survive the reality of everyday life." - Bill Cunningham</div>
+    
+    <div class="category-selection">
+        <div class="category-card">
+            <img src="static/men_icon.png" alt="Men">
+            <a href="/men">Men</a>
+        </div>
+        <div class="category-card">
+            <img src="static/women_icon.png" alt="Women">
+            <a href="/women">Women</a>
+        </div>
+        <div class="category-card">
+            <img src="static/kids_icon.jpg" alt="Kids">
+            <a href="/kids">Kids</a>
+        </div>
+    </div>
+
+    <script>
+        // Create background particles
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 5 and 30px
+                const size = Math.random() * 25 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                
+                container.appendChild(particle);
+            }
+        });
+    </script>
+    
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+</body>
+</html>
