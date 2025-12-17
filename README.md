@@ -1,5 +1,4 @@
-# AI-Virtual-Clothes-Try-On
-# AI Virtual Clothes Try-On System
+# AI Virtual Clothes Try-On
 
 ## Project Overview
 The AI Virtual Clothes Try-On system is a web-based application that allows users to virtually try clothes using predefined 3D avatars. Instead of uploading personal photos, users can select their body size (XS–XXL) and skin tone (fair to dark) to see how different clothing items fit on a virtual model. The system uses 3D modeling and real-time rendering to deliver a realistic and privacy-friendly virtual try-on experience.
